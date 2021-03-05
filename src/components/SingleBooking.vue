@@ -4,7 +4,9 @@
       <div class="image_container">
         <img :src="imgPathPNG(booking.img)" alt="" class="booking-image" />
         <div type="button" class="collapsible" @click="toggleCollapsable">
-          Read {{ copy }} about this hotel
+          <div>
+            <strong>Read {{ copy }}</strong> about this hotel
+          </div>
           <div class="chevron-container">
             <img class="chevron" :src="iconPathSVG('chevron-down-solid')" />
           </div>
@@ -32,7 +34,7 @@
       </div>
     </div>
     <div class="content" :class="{ show: copy !== 'more' }">
-      <div class="content_text">Overview</div>
+      <div class="content_title">Overview</div>
       <div class="content_text">
         {{ booking.overview }}
       </div>
@@ -179,7 +181,13 @@ export default {
     overflow: hidden;
     background-color: white;
     padding: 15px;
-    .content_text {
+      &_title {
+      font-family: $otb-font-regs;
+      margin-bottom: 10px;
+      color: $otb-navy;
+      font-size: 14px;
+    }
+    &_text {
       font-family: $otb-font-regs;
       margin-bottom: 10px;
       font-size: 14px;
