@@ -182,6 +182,7 @@ export default {
     .content_text {
       font-family: $otb-font-regs;
       margin-bottom: 10px;
+      font-size: 14px;
     }
   }
   .show {
