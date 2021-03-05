@@ -7,10 +7,15 @@
       :class="{ active: active === filter.ref }"
       @click="setFilter(filter.ref)"
     >
+    <div>
       {{ filter.text }}
       <strong>
         {{ filter.name }}
       </strong>
+    </div>
+      <div class="icon-container">
+        <img class="icon" :src="iconPathSVG(filter.icon)" />
+      </div>
     </div>
   </div>
 </template>
@@ -21,9 +26,9 @@ export default {
   data() {
     return {
       filters: [
-        { name: "Alphabetically", ref: "alph", text: "Sort" },
-        { name: "Price", ref: "price", text: "Sort by" },
-        { name: "Star Rating", ref: "star", text: "Sort by" },
+        { name: "Alphabetically", ref: "alph", text: "Sort", icon:"sort-alpha-down-solid" },
+        { name: "Price", ref: "price", text: "Sort by",icon: "pound-sign-solid" },
+        { name: "Star Rating", ref: "star", text: "Sort by",icon:"star-solid" },
       ],
       active: "price",
     };
@@ -33,6 +38,14 @@ export default {
       this.active = ref;
       this.$emit("change-filter-type", ref);
     },
+    iconPathSVG(item) {
+
+      try {
+        return require(`../assets/icons/${item}.svg`);
+      } catch (e) {
+        return require(`../assets/logo.png`);
+      }
+    },
   },
 };
 </script>
@@ -40,8 +53,11 @@ export default {
 <style lang="scss" scoped>
 .filter-menu_wrapper {
   padding-top: 50px;
+
 }
 .filter_item {
+  display: flex;
+  justify-content: space-between;
   padding: 10px;
   border: black solid 1px;
   width: 250px;
@@ -50,7 +66,21 @@ export default {
   cursor: pointer;
   &.active {
     background-color: $otb-navy;
-    color: white;
+    color: $otb-white;
+  }
+  .icon-container {
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    border: 1px black solid;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: $otb-grey;
+    .icon {
+      height: 100%;
+    }
   }
 }
 @media only screen and (max-width: 750px) {
