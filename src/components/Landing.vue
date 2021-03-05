@@ -19,7 +19,36 @@ export default {
   components: { FilterMenu, SingleBooking },
   data() {
     return {
-      filterType: "price",
+      sortField: "price",
+      sortMethod: {
+        alph: (a, b) => {
+          if (a.name < b.name) {
+            return -1;
+          }
+          if (a.name > b.name) {
+            return 1;
+          }
+          return 0;
+        },
+        price: (a, b) => {
+          if (a.price < b.price) {
+            return -1;
+          }
+          if (a.price > b.price) {
+            return 1;
+          }
+          return 0;
+        },
+        star: (a, b) => {
+          if (a.rating < b.rating) {
+            return 1;
+          }
+          if (a.rating > b.rating) {
+            return -1;
+          }
+          return 0;
+        },
+      },
       bookings: [
         {
           _id: 1,
@@ -66,41 +95,12 @@ export default {
   computed: {
     orderedBookings() {
       const bookingClone = this.bookings;
-      const sortField = {
-        alph: (a, b) => {
-          if (a.name < b.name) {
-            return -1;
-          }
-          if (a.name > b.name) {
-            return 1;
-          }
-          return 0;
-        },
-        price: (a, b) => {
-          if (a.price < b.price) {
-            return -1;
-          }
-          if (a.price > b.price) {
-            return 1;
-          }
-          return 0;
-        },
-        star: (a, b) => {
-          if (a.rating < b.rating) {
-            return 1;
-          }
-          if (a.rating > b.rating) {
-            return -1;
-          }
-          return 0;
-        },
-      };
-      return bookingClone.sort(sortField[this.filterType]);
+      return bookingClone.sort(this.sortMethod[this.sortField]);
     },
   },
   methods: {
     changeFilter(e) {
-      this.filterType = e;
+      this.sortField = e;
     },
   },
 };
