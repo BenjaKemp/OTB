@@ -1,5 +1,5 @@
 <template>
-  <div class="hero">
+  <div class="wrapper">
     <filter-menu v-on:change-filter-type="changeFilter" />
     <div class="booking-content">
       <SingleBooking
@@ -107,7 +107,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.hero {
+.wrapper {
   display: flex;
   justify-content: space-around;
 }
@@ -119,7 +119,7 @@ export default {
 }
 
 @media only screen and (max-width: 750px) {
-  .hero {
+  .wrapper {
     flex-direction: column;
     .booking-content {
       width: 100%;
