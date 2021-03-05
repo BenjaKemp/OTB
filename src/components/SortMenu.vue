@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: "FilterMenu",
+  name: "SortMenu",
   data() {
     return {
       filters: [
@@ -39,7 +39,6 @@ export default {
       this.$emit("change-filter-type", ref);
     },
     iconPathSVG(item) {
-
       try {
         return require(`../assets/icons/${item}.svg`);
       } catch (e) {

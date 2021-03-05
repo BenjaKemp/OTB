@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <filter-menu v-on:change-filter-type="changeFilter" />
+    <sort-menu v-on:change-filter-type="changeFilter" />
     <div class="booking-content">
       <SingleBooking
         v-for="booking in orderedBookings"
@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import FilterMenu from "./FilterMenu.vue";
+import SortMenu from "./SortMenu.vue";
 import SingleBooking from "./SingleBooking.vue";
 export default {
   name: "Landing",
-  components: { FilterMenu, SingleBooking },
+  components: { SortMenu, SingleBooking },
   data() {
     return {
       sortField: "price",
