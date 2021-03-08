@@ -3,13 +3,10 @@ import SortMenu from '@/components/SortMenu.vue'
 
 describe('SortMenu.vue', () => {
 
-  it('renders props.msg when passed', async () => {
+  it('SortMenu.vue renders correctly', async () => {
     const wrapper = mount(SortMenu)
     const image = await wrapper.vm.iconPathSVG('sort-alpha-down-solid')
     console.log('this is image    ',image)
-
-
-
   })
   it('checks that setFilter sets the filter and emits the value  ', async () => {
     const wrapper = mount(SortMenu)
