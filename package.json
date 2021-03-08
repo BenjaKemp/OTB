@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "test":"jest --verbose --watch"
+    "test": "jest --verbose"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.2",
@@ -41,17 +41,15 @@
       "parser": "babel-eslint"
     },
     "rules": {},
-    "overrides": [
-      {
-        "files": [
-          "**/__tests__/*.{j,t}s?(x)",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
-        ],
-        "env": {
-          "jest": true
-        }
+    "overrides": [{
+      "files": [
+        "**/__tests__/*.{j,t}s?(x)",
+        "**/tests/unit/**/*.spec.{j,t}s?(x)"
+      ],
+      "env": {
+        "jest": true
       }
-    ]
+    }]
   },
   "browserslist": [
     "> 1%",

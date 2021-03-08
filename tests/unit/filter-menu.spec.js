@@ -3,11 +3,6 @@ import SortMenu from '@/components/SortMenu.vue'
 
 describe('SortMenu.vue', () => {
 
-  it('SortMenu.vue renders correctly', async () => {
-    const wrapper = mount(SortMenu)
-    const image = await wrapper.vm.iconPathSVG('sort-alpha-down-solid')
-    console.log('this is image    ',image)
-  })
   it('checks that setFilter sets the filter and emits the value  ', async () => {
     const wrapper = mount(SortMenu)
     wrapper.setData({ active:'price' } )
